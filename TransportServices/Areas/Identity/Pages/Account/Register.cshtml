@@ -1,0 +1,116 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+@section Styles{
+    <style>
+        main {
+            margin-top: 30px;
+        }
+    </style>
+}
+
+<div class="container">
+    @if (Model.ShowMessage != null)
+    {
+        
+        @*<div class="alert alert-success alert-dismissible fade show alertMess " role="alert" style="margin:auto;width:60%;margin-top:10px;">
+            
+            <strong>Success!</strong> <span>@Model.ShowMessage</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span class="">X</span>
+            </button>
+        </div>*@
+        <script>
+            window.onload=function () {
+                //alert("");
+                swal("Information!", "@Model.ShowMessage", "success")
+            }
+        </script>
+    }<br />
+    <div class="card " style="width:60%; margin:auto">
+        <div class="card-header bg-info">
+            <h4>Create an Account</h4>
+        </div>
+        <div class="card-body">
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Input.FirstName"></label>
+                            <input asp-for="Input.FirstName" class="form-control" />
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Input.LastName"></label>
+                            <input asp-for="Input.LastName" class="form-control" />
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Input.PhoneNo"></label>
+                            <input asp-for="Input.PhoneNo" class="form-control" maxlength="10" id="PhoneNo" />
+                            <span asp-validation-for="Input.PhoneNo" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+        <div class="card-footer">
+            <p class="text-center">Have an account? <a asp-area="Identity" asp-page="/Account/Login">Log In</a> </p>
+
+        </div>
+    </div> <!-- card.// -->
+</div>
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Hide Success Message..
+            $(".alertMess").fadeOut(10000);//10 second
+            //Allowed 10 digit only in Phone No.We can not Enter the any alphabets..
+            $("#PhoneNo").keypress(function (evnt) {
+                if (evnt.which != 8 && evnt.which != 0 && (evnt.which < 48 || evnt.which > 57)) {
+                    // alert("Please Enter Only Digit Allowed!");
+                    swal("", "Please Enter Only Digit Allowed!", "error")
+                    return false;
+                }
+            });
+        })
+    </script>
+}
