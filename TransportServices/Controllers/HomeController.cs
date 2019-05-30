@@ -24,7 +24,10 @@ namespace TransportServices.Controllers
         {
             return View();
         }
-
+        public IActionResult Services()
+        {
+            return View();
+        }
         public IActionResult Contact()
         {
             return View();

@@ -3,104 +3,142 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- custom-theme -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Trucking Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //custom-theme -->
     <title>@ViewData["Title"] - TransportServices</title>
 
     <environment include="Development">
-        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/lightbox.css" />
-        <link rel="stylesheet" href="~/css/font-awesome.css" />
-        <link rel="stylesheet" href="~/css/mainStyles.css" />
-        <link rel="stylesheet" href="~/css/style.css" />*@
+        <link href="~/assetsItem/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="~/assetsItem/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link rel="stylesheet" href="~/assetsItem/css/mainStyles.css" />
+        <link rel='stylesheet' href='~/assetsItem/css/dscountdown.css' type='text/css' media='all' />
 
-        @*<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>*@
-        <!-- Bootstrap Core CSS -->
-        <link href="~/transport/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Flaticon CSS -->
-        <link href="~/transport/fonts/flaticon/flaticon.css" rel="stylesheet">
-        <!-- font-awesome CSS -->
-        <link href="~/transport/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Offcanvas CSS -->
-        <link href="~/transport/css/hippo-off-canvas.css" rel="stylesheet">
-        <!-- animate CSS -->
-        <link href="~/transport/css/animate.css" rel="stylesheet">
-        <!-- language CSS -->
-        <link href="~/transport/css/language-select.css" rel="stylesheet">
-        <!-- owl.carousel CSS -->
-        <link href="~/transport/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="~/transport/css/magnific-popup.css" rel="stylesheet">
-        <!-- Main menu -->
-        <link href="~/transport/css/menu.css" rel="stylesheet">
-        <!-- Template Common Styles -->
-        <link href="~/transport/css/template.css" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link href="~/transport/css/style.css" rel="stylesheet">
-        <!-- Responsive CSS -->
-        <link href="~/transport/css/responsive.css" rel="stylesheet">
-        <script src="~/transport/js/vendor/modernizr-2.8.1.min.js"></script>
+        <link rel="stylesheet" href="" type="text/css" media="screen" property="" />
+        <!-- gallery -->
+        <link href="" rel="stylesheet" type="text/css">
+        <!-- //gallery -->
+        <!-- font-awesome-icons -->
+        <link href="~/assetsItem/css/font-awesome.css" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+        <link href="//fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+        <!-- js -->
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <!-- //js -->
+        <!-- start-smooth-scrolling -->
+        <script type="text/javascript">
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+                    $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+                });
+            });
+        </script>
     </environment>
-    <environment exclude="Development">
+    @*<environment exclude="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    </environment>*@
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <style>
+        #exampleSlider {
+            margin-bottom: -64px;
+            padding: 0;
+            margin-top: 124px;
+        }
+        .banner {
+            background: white; 
+            border-bottom: solid 1px lightgray;
+            padding: 1px;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div>
+        <partial name="_Header"/>
         <main role="main" class="">
             @RenderBody()
+           
         </main>
+        
+        <partial name="_Footer"/>
     </div>
 
     <environment include="Development">
-        @*<script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
-        <script src="~/js/bars.js"></script>
-        <script src="~/js/easing.js"></script>
-        <script src="~/js/easyResponsiveTabs.js"></script>
-        <script src="~/js/jquery.flexisel.js"></script>
-        <script src="~/js/lightbox-plus-jquery.min.js"></script>
-        <script src="~/js/mainScript.js"></script>
-        <script src="~/js/move-top.js"></script>
-        <script src="~/js/rgbSlide.min.js"></script>
-        <script src="~/js/SmoothScroll.min.js"></script>*@
+       
+        <script src="~/assetsItem/js/mainScript.js"></script>
+        <script src="~/assetsItem/js/rgbSlide.min.js"></script>
 
-        <!-- jQuery -->
-        <script src="~/transport/js/jquery.js"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="~/transport/js/bootstrap.min.js"></script>
-        <!-- owl.carousel -->
-        <script src="~/transport/owl.carousel/owl.carousel.min.js"></script>
-        <!-- Magnific-popup -->
-        <script src="~/transport/js/jquery.magnific-popup.min.js"></script>
-        <!-- Offcanvas Menu -->
-        <script src="~/transport/js/hippo-offcanvas.js"></script>
-        <!-- inview -->
-        <script src="~/transport/js/jquery.inview.min.js"></script>
-        <!-- stellar -->
-        <script src="~/transport/js/jquery.stellar.js"></script>
-        <!-- countTo -->
-        <script src="~/transport/js/jquery.countTo.js"></script>
-        <!-- classie -->
-        <script src="~/transport/js/classie.js"></script>
-        <!-- selectFx -->
-        <script src="~/transport/js/selectFx.js"></script>
-        <!-- sticky kit -->
-        <script src="~/transport/js/jquery.sticky-kit.min.js"></script>
-        <!-- GOGLE MAP -->
-        <script src="https://maps.googleapis.com/maps/api/js"></script>
-        <!--TWITTER FETCHER-->
-        <script src="~/transport/js/twitterFetcher_min.js"></script>
-        <!-- Custom Script -->
-        <script src="~/transport/js/scripts.js"></script>
 
+        <!--team-->
+        <script type="text/javascript">
+            $(window).load(function () {
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 4,
+                    animationSpeed: 1000,
+                    autoPlay: true,
+                    autoPlaySpeed: 3000,
+                    pauseOnHover: true,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 1
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 2
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript" src="~/assetsItem/js/jquery.flexisel.js"></script>
+        <!--team-->
+        <!-- //here ends scrolling icon -->
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                /*
+                    var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                    };
+                */
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            });
+        </script>
+        <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+        <script src="~/assetsItem/js/SmoothScroll.min.js"></script>
+        <!-- start-smoth-scrolling -->
+        <script type="text/javascript" src="~/assetsItem/js/move-top.js"></script>
+        <script type="text/javascript" src="~/assetsItem/js/easing.js"></script>
+
+        <!-- start-smoth-scrolling -->
+        <!-- for bootstrap working -->
+        <script src="~/assetsItem/js/bootstrap.js"></script>
+        <!-- //for bootstrap working -->
     </environment>
-    <environment exclude="Development">
+    @*<environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery"
@@ -114,7 +152,7 @@
                 integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
     </environment>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
 
     @RenderSection("Scripts", required: false)
     @RenderSection("Styles", required: false)

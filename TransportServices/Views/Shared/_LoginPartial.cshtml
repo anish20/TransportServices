@@ -9,9 +9,9 @@
         var getUser = @User.Identity.Name;
         var getWelcome = UserManager.Users.Where(i => i.Email == getUser).FirstOrDefault();
         <li>
-            <a class=" text-white" style="color:white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello !@getWelcome.FirstName @getWelcome.LastName</a>
+            <a class="text-white" style="color:white" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello !@getWelcome.FirstName @getWelcome.LastName</a>
         </li>
-        <li>
+        <li class="ml-2">
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="btn btn-link text-white" style="color:white"><i class="fa fa-sign-out"></i> Logout</button>
             </form>
@@ -20,10 +20,10 @@
     else
     {
         <li>
-            <a class="text-white" style="color:white" asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus"></i> Register</a>
+            <a class="text-white" style="color:white" asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-user-plus"></i>Register</a>
         </li>
         <li>
-            <a class="text-white" style="color:white" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-user"></i> Login</a>
+            <a class="text-white" style="color:white" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-user"></i>Login</a>
         </li>
     }
 </ul>
