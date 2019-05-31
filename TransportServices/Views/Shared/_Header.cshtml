@@ -1,4 +1,8 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@using TransportServices.Data;
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
 <!---Topheader-->
@@ -50,7 +54,11 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html"><span data-hover="Home">Home</span></a></li>
                         <li><a asp-action="Index" asp-controller="About"><span data-hover="About Us">About Us</span></a></li>
-                        <li><a asp-action="index" asp-controller="Report"><span data-hover="Services">Report</span></a></li>
+                        <li><a asp-action="" asp-controller=""><span data-hover="Services">Services</span></a></li>
+                       @if (SignInManager.IsSignedIn(User))
+                        {
+                        <li><a asp-action="index" asp-controller="Report"><span data-hover="Reports">Reports</span></a></li>
+                        }
                         <li><a asp-action="Index" asp-controller="Contact"><span data-hover="Contact Us">Contact Us</span></a></li>
                     </ul>
                 </nav>
