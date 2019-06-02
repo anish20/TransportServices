@@ -47,17 +47,17 @@
                         </ul>
                         <!-- second-level-items -->
                     </li>
-                     <li>
-                        <a href="timeline.html"><i class="fa fa-file fa-fw"></i>Reports</a>
+                    <li>
+                        <a asp-action="Report" asp-controller="VehicleManagement"><i class="fa fa-file fa-fw"></i>Reports</a>
                     </li>
                      <li>
                         <a href="#"><i class="fa fa-flask fa-fw"></i>Transport Management<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html"><i class="fa fa-plus"></i> Add new Vehicle</a>
+                                <a asp-action="AddVehicle" asp-controller="VehicleManagement"><i class="fa fa-plus"></i> Add new Vehicle</a>
                             </li>
                             <li>
-                                <a href="buttons.html"><i class="fa fa-th-list"></i> Transport Vehicle List</a>
+                                <a asp-action="ViewVehicle" asp-controller="VehicleManagement"><i class="fa fa-th-list"></i> Transport Vehicle List</a>
                             </li>
                            
                         </ul>
@@ -67,10 +67,10 @@
                         <a href="#"><i class="fa fa-users fa-fw"></i> User Management<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="panels-wells.html"><i class="fa fa-plus"></i> Add new User</a>
+                                <a asp-action="AddUser" asp-controller="UserManagement"><i class="fa fa-plus"></i> Add new User</a>
                             </li>
                             <li>
-                                <a href="buttons.html"><i class="fa fa-th-list"></i> User List</a>
+                                <a asp-action="Index" asp-controller="UserManagement"><i class="fa fa-th-list"></i> User List</a>
                             </li>
                             <li>
                                 <a href="buttons.html"><i class="fa fa-wrench"></i> User Profile</a>
