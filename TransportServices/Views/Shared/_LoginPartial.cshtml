@@ -94,7 +94,7 @@
           <a style="text-decoration:none;color:white;" href="#" id="profile" class="dropdown-toggle" data-toggle="dropdown"> @getWelcome.FirstName @getWelcome.LastName <span class="fa fa-user-o"></span></a>
           <ul class="dropdown-menu" id="dropdown-menu">
             <li><a href="#"><span class="glyphicon glyphicon-cog"></span> Profile </a></li>
-            <li class="divider"></li>
+            <li class="divider"></li> 
             <li>
                 <form  asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="btn btn-link" style="text-decoration:none;color:white;text-transform: uppercase"><i class="fa fa-sign-out"></i> Logout</button>
