@@ -13,5 +13,10 @@ namespace TransportServices.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public IActionResult VehicleOut()
+        {
+            return View();
+        }
     }
 }
