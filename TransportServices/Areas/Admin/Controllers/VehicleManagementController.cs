@@ -14,9 +14,6 @@ namespace TransportServices.Areas.Admin.Controllers
             return View();
         }
 
-<<<<<<< HEAD
-        public IActionResult VehicleOut()
-=======
         public IActionResult Report()
         {
             return View();
@@ -28,7 +25,6 @@ namespace TransportServices.Areas.Admin.Controllers
         }
 
         public IActionResult AddVehicle()
->>>>>>> 084ec3d57de57b20e505b6b62feb9ad14e1bd89d
         {
             return View();
         }
