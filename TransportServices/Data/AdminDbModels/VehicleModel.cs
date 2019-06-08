@@ -28,6 +28,10 @@ namespace TransportServices.Data.AdminDbModels
         public string DriverName { get; set; }
         [Column("driverContact")]
         public long DriverContact { get; set; }
+        [Column("rate_pmt")]
+        public int RatePMT { get; set; }
+        [Column("amount")]
+        public decimal Amount { get; set; }
         [Column("vehicleInDate")]
         public DateTime VehicleInDate { get; set; }
         [Column("veheicleOutDate")]
