@@ -7,31 +7,30 @@
 
     <div class="row">
         <!-- Page Header -->
-        <div class="col-lg-12">
+        <div class="col">
             <h1 class="page-header">@ViewBag.Title</h1>
 
         </div>
         <!--End Page Header -->
     </div>
     <!--forms--->
-    <div class="container">
-      
+   
         <!-- Row start -->
-        <div class="row" style="margin:auto;width:60%">
-            <div class="col-md-8 col-sm-12 col-xs-12 ">
+         <div class="row" style="margin:auto;width:60%">
+            <div class="col-md-8 ">
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <i class="icon-calendar"></i>
                         <h3 class="panel-title">Vehical-Out Form</h3>
                     </div>
 
-                    <div class="panel-body">
+                      <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-12 col-sm-12 col-sx-12">
+                            <div class="col col-sm-12 col-sx-12">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Vehicle No">
+                                    <input type="text" class="form-control" placeholder="Vehicle No" id="vehicleNo">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-outline-success" type="button" data-original-title="" title=""><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-default btn-outline-success" id="searchBtn" type="button" data-original-title="" title=""><i class="fa fa-search"></i></button>
                                     </span>
                                 </div>
                             </div>
@@ -41,8 +40,48 @@
             </div>
         </div>
         <!-- Row end -->
-        <!
-         </div>
     <!--./forms--->
-
+    <div id="table"></div>
 </div>
+
+@section Scripts{
+    <script src="~/admin/assets/plugins/jquery-1.10.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#searchBtn").click(()=>{
+       var vehicleNo=$("#vehicleNo").val();
+       var url="/api/VehicleEntry/GetReportByID?vehicleNo="+vehicleNo;
+       var table;
+       $.ajax({
+           url:url,
+           type:'GET',
+           dataType:'JSON',
+           success:function(data){
+               console.log(data);
+               if(data){
+                   //console.table(data);
+                  $("#vehicleNo").val('');
+                 table= "<table class='table table-bordered'><tr><th>Vehicle No</th><th>Bilty No</th><th>QTY PMT</th><th>Driver Name</th><th>Driver Contact</th></tr>";
+                 table+= "<tr><td>"+data.vehicleNo+"</td><td>"+data.biltyNo+"</td><td>"+data.quantityPMT+"</td><td>"+data.driverName+"</td><td>"+data.driverContact+"</td></tr></table>";
+                  $("#table").html(table); 
+                  $("#searchBtn").click(function(){
+                     $("#table").remove(table);  
+                  })
+                  
+
+               }
+               
+               
+           },
+           error:function(err){
+               if(err){
+                swal("Oh! No", "Data Not found of this Vehicle No", "error") ;
+               }
+           }
+       })
+    })
+})
+</script>
+
+}

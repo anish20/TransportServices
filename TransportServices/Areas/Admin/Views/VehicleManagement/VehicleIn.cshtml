@@ -18,7 +18,18 @@
                 <!--End Page Header -->
             </div>
             <!--forms--->
- 
+<div ID="Loader" style="width:300px;height:300px;opacity: 0.8;position: absolute;
+    top: 203px;
+    left: 543px;
+    z-index: 1;display:none">
+    <p class="fas fa-circle-notch fa-spin" style="font-size:50px;position: absolute;
+    top: 65px;
+    left: 93px;
+    padding: 30px;
+    background: gray;
+    text-align: center;
+    margin: auto;"></p>
+    </div>
  <!-- Row start -->
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -99,7 +110,7 @@
                 </div>
                 <div class="col-lg-6 col-sm-6 col-sx-6">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Driver Contact No" id="txtDriverContact" required="">
+                        <input type="text" class="form-control" placeholder="Driver Contact No" id="txtDriverContact" required="" maxlength="10">
 
                     </div>
                 </div>
@@ -147,8 +158,10 @@
 <script>
     $(document).ready(function(){
         $("#btnSave").click(function(){
-            $("#btnSave").html('Save  <i class="fas fa-circle-notch fa-spin" style="font-size:20px"></i>').attr('disabled',true)
-            //alert("Hello")
+           
+          $("#btnSave").html('Save  <i class="fas fa-circle-notch fa-spin" style="font-size:20px"></i>').attr('disabled',true);
+         // $("#Loader").show();
+         $("#Loader").css("display","block");
             var VehicleNo=$("#txtVehicleNo").val();
             var BiltNo=$("#txtBiltNo").val();
             var Qauntity=$("#txtQty").val();
@@ -160,10 +173,12 @@
             var DriverName=$("#txtDriverName").val();
             var DriverContact=$("#txtDriverContact").val();
             var Remark=$("#txtRemark").val();
+
            // create object
            var obj={VehicleNo:VehicleNo,BiltyNo:BiltNo,QuantityPMT:Qauntity,InvoiceNo:Invoice,TransporterName:TransporterName,TransportName:TransportName,DriverName:DriverName,DriverContact:DriverContact,Remark:Remark};
            var jsonData=JSON.stringify(obj);
            var url="/api/VehicleEntry/AddNewVehicleEntry";
+           try{
            $.ajax({
                url:url,
                type:'POST',
@@ -171,12 +186,39 @@
                data:jsonData,
                contentType:'application/json; charset=utf-8',
                success:function(result){
+                   //$("#Loader").hide();
+                   $("#Loader").css("display","none");
                    swal("Thank You!", "Vehicle Entry Succeessfully Saved", "success")
-                    $("#btnSave").html('').attr('disabled',false);
-           
+                   //return true;
+                   //$("#txtVehicleNo").val('');
+                    $("#btnSave").html('Save <i class="fa fa-save"></i>').attr('disabled',false);
+                    
+                     if(result==true){
+                        $("#txtVehicleNo").val('');
+                        $("#txtBiltNo").val('');
+                        $("#txtQty").val('');
+                        $("#txtInvoice").val('');
+                        $("#txtTransporterName").val('');
+                        $("#txtTransportName").val('');
+                        $("#txtRatePMT").val('');
+                        $("#txtAmount").val('');
+                        $("#txtDriverName").val('');
+                        $("#txtDriverContact").val('');
+                        $("#txtRemark").val('');
+                     }
                    console.log(result);
+               },error:function(err){
+                   if(err){
+                      swal("Oh! No", "Something went wrong", "error") ;
+                      console.log(err.responseText);
+                      $("#btnSave").html('Save <i class="fa fa-save"></i>').attr('disabled',false);
+                      $("#Loader").css("display","none");
+                   }
                }
            })
+           }catch(e){
+               console.log(e)
+           }
             
         })
     });
