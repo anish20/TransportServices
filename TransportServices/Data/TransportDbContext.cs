@@ -10,6 +10,7 @@ namespace TransportServices.Data
     public class TransportDbContext: DbContext
     {
         public DbSet<VehicleModel> VehicleModels { get; set; }
+        public DbSet<UserModel> UserModels { get; set; }
         public TransportDbContext(DbContextOptions<TransportDbContext> options) : base(options)
         {
 
