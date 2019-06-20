@@ -51,6 +51,8 @@ namespace TransportServices.WebApi.Repository
         {
             try
             {
+                vehicleModel.Status = "Vehicle IN";
+                vehicleModel.VehicleInDate = DateTime.Now;
                 _dbContext.VehicleModels.Add(vehicleModel);
                 int i = await _dbContext.SaveChangesAsync();
                 if (i > 0)

@@ -175,7 +175,7 @@
             var Remark=$("#txtRemark").val();
 
            // create object
-           var obj={VehicleNo:VehicleNo,BiltyNo:BiltNo,QuantityPMT:Qauntity,InvoiceNo:Invoice,TransporterName:TransporterName,TransportName:TransportName,DriverName:DriverName,DriverContact:DriverContact,Remark:Remark};
+           var obj={VehicleNo:VehicleNo,BiltyNo:BiltNo,QuantityPMT:Qauntity,InvoiceNo:Invoice,TransporterName:TransporterName,TransportName:TransportName,RatePmt:RatePMT,Amount:Amount,DriverName:DriverName,DriverContact:DriverContact,Remark:Remark};
            var jsonData=JSON.stringify(obj);
            var url="/api/VehicleEntry/AddNewVehicleEntry";
            try{

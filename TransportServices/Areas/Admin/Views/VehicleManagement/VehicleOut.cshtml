@@ -21,16 +21,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading clearfix">
                         <i class="icon-calendar"></i>
-                        <h3 class="panel-title">Vehical-Out Form</h3>
+                        <h3 class="panel-title">Vehicle-Out Form</h3>
                     </div>
 
                       <div class="panel-body">
                         <div class="row">
                             <div class="col col-sm-12 col-sx-12">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Vehicle No" id="vehicleNo">
+                                    <input type="text" class="form-control" placeholder="Vehicle No" id="vehicleNo" required="">
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-outline-success" id="searchBtn" type="button" data-original-title="" title=""><i class="fa fa-search"></i></button>
+                                        <button class="btn btn-info btn-outline-success" id="searchBtn" type="button" data-original-title="" title=""><i class="fa fa-search"></i></button>
                                     </span>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
     <script src="~/admin/assets/plugins/jquery-1.10.2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script>
-$(document).ready(function(){
+    $(document).ready(function () {  
     $("#searchBtn").click(()=>{
        var vehicleNo=$("#vehicleNo").val();
        var url="/api/VehicleEntry/GetReportByID?vehicleNo="+vehicleNo;
@@ -57,13 +57,13 @@ $(document).ready(function(){
            url:url,
            type:'GET',
            dataType:'JSON',
-           success:function(data){
+           success: function (data){
                console.log(data);
                if(data){
                    //console.table(data);
-                  $("#vehicleNo").val('');
-                 table= "<table class='table table-bordered'><tr><th>Vehicle No</th><th>Bilty No</th><th>QTY PMT</th><th>Driver Name</th><th>Driver Contact</th></tr>";
-                 table+= "<tr><td>"+data.vehicleNo+"</td><td>"+data.biltyNo+"</td><td>"+data.quantityPMT+"</td><td>"+data.driverName+"</td><td>"+data.driverContact+"</td></tr></table>";
+                   $("#vehicleNo").val('');
+                   table = "<table class='table table-bordered'><tr class='bg-warning'><th>Vehicle No</th><th>Bilty No</th><th>QTY PMT</th><th>Driver Name</th><th>Driver Contact</th><th>Vehicle-In Date</th><th>Vehicle Status</th><th>Action</th></tr>";
+                   table += "<tr><td>" + data.vehicleNo + "</td><td>" + data.biltyNo + "</td><td>" + data.quantityPMT + "</td><td>" + data.driverName + "</td><td>" + data.driverContact + "</td><td>" +data.vehicleInDate+"</td><td style='color:green'>"+data.status+"</td><td><button class='btn btn-link'><i class='fa fa-pencil'></i></button></td></tr></table>";
                   $("#table").html(table); 
                   $("#searchBtn").click(function(){
                      $("#table").remove(table);  
@@ -81,7 +81,22 @@ $(document).ready(function(){
            }
        })
     })
-})
+    })
+
+
+    ////function formatDate(date) {
+    ////    console.log("My date:"+date);
+    ////    var hours = date.getHours();
+    ////    var minutes = date.getMinutes();
+    ////    var ampm = hours >= 12 ? 'pm' : 'am';
+    ////    hours = hours % 12;
+    ////    hours = hours ? hours : 12; // the hour '0' should be '12'
+    ////    minutes = minutes < 10 ? '0' + minutes : minutes;
+    ////    var strTime = hours + ':' + minutes + ' ' + ampm;
+    ////    return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+    ////}
+
+
 </script>
 
 }
