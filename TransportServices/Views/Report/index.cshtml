@@ -49,57 +49,57 @@
 
     function getTransportEntryData() {
         var index = 0;
-        $('#example').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
+        //$('#example').DataTable({
+        //    dom: 'Bfrtip',
+        //    buttons: [
                 
-                {
-                    extend: 'excelHtml5',
-                    text: '<i class="fa fa-file-excel-o"></i>',
-                    titleAttr: 'Excel'
-                },
+        //        {
+        //            extend: 'excelHtml5',
+        //            text: '<i class="fa fa-file-excel-o"></i>',
+        //            titleAttr: 'Excel'
+        //        },
                 
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="fa fa-file-pdf-o"></i>',
-                    titleAttr: 'PDF'
-                }
-            ]
-        });
-        //$.ajax({
-        //    url: "/Report/GetAllTransportEntryData",
-        //    type: "GET",
-        //    contentType: "application/json;charset=utf-8",
-        //    dataType: "json",
-        //    success: function (response) {
-        //        ReportList = response;
-        //        table = $('#example').DataTable({
-        //            "bDestroy": true,
-        //            data: response.itemsList,
-        //            "searching": false,
-        //            "bFilter": false,
-        //            "bLengthChange": false,
-        //            "paging": true,
-        //            columns: [
-        //                { title: "S.No" },
-        //                { title: "Name", "data": "itemname" },
-        //                { title: "Qty", "data": "qty" }
-        //            ],
-        //            "columnDefs": [
-        //            {//Button
-        //                "targets": 0,
-        //                "render": function (i, row) {
-        //                    index = index + 1;
-        //                    return '<span>' + index + '</span>';
-        //                }
-        //            }
-        //            ]
-        //        });
-        //    },
-        //    error: function (response) {
-        //        alert(response);
-        //    }
+        //        {
+        //            extend: 'pdfHtml5',
+        //            text: '<i class="fa fa-file-pdf-o"></i>',
+        //            titleAttr: 'PDF'
+        //        }
+        //    ]
         //});
+        $.ajax({
+            url: "api/VehicleEntry/GetReport",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ReportList = response;
+                //table = $('#example').DataTable({
+                //    "bDestroy": true,
+                //    data: response.itemsList,
+                //    "searching": false,
+                //    "bFilter": false,
+                //    "bLengthChange": false,
+                //    "paging": true,
+                //    columns: [
+                //        { title: "S.No" },
+                //        { title: "Name", "data": "itemname" },
+                //        { title: "Qty", "data": "qty" }
+                //    ],
+                //    "columnDefs": [
+                //    {//Button
+                //        "targets": 0,
+                //        "render": function (i, row) {
+                //            index = index + 1;
+                //            return '<span>' + index + '</span>';
+                //        }
+                //    }
+                //    ]
+                //});
+            },
+            error: function (response) {
+                alert(response);
+            }
+        });
     }
 
 </script>

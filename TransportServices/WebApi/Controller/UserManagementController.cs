@@ -15,10 +15,12 @@ namespace TransportServices.WebApi.Controller
     [Area("Admin")]
     public class UserManagementController : ControllerBase
     {
+        public readonly TransportDbContext _dbContext;
         public readonly UserManagementRepository _userManagementRepository;
         public UserManagementController(TransportDbContext dbContext)
         {
             _userManagementRepository = new UserManagementRepository(dbContext);
+            _dbContext = dbContext;
         }
 
         [HttpGet]
@@ -39,6 +41,28 @@ namespace TransportServices.WebApi.Controller
             catch (Exception)
             {
                 return NotFound("throwing exp");
+            }
+        }
+
+        [HttpPost]
+        public async Task<bool> Add(UserModel data)
+        {
+            try
+            {
+                _dbContext.UserModels.Add(data);
+                int i = await _dbContext.SaveChangesAsync();
+                if (i > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
     }

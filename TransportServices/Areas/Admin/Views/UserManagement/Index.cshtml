@@ -5,7 +5,10 @@
     ViewBag.Title = "Vehicle List";
 
 }
-
+<style>
+    .modal-header .close {
+        margin-top: -30px;
+</style>
 <!--  wrapper -->
 <!--  page-wrapper -->
 <div id="page-wrapper">
@@ -22,7 +25,7 @@
         <!-- Welcome -->
         <div class="row">
             <div class="col-lg-9 col-lg-offset-3">
-                <a asp-action="AddUser" asp-controller="UserManagement" class="btn btn-primary pull-right">Add New User</a>
+                <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Add New User</a>
             </div>
         </div>
         <!--end  Welcome -->
@@ -38,6 +41,33 @@
 
     </div>
 
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Add New User</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 <script type="text/javascript" src="~/js/jquery-2.1.4.min.js"></script>
@@ -46,78 +76,59 @@
     var table;
     $(document).ready(function () {
 
-        getVehicleReportByType();
+        getUserList();
 
     });
 
 
-    function getVehicleReportByType() {
-        var vtype = jQuery("#vehicleType").val();
+    function getUserList() {
         var index = 0;
-        $("#example").DataTable().destroy()
-        $('#example').DataTable({
-            dom: 'Bfrtip',
-            buttons: [
-
-                {
-                    extend: 'excelHtml5',
-                    text: '<i class="fa fa-file-excel-o"></i>',
-                    titleAttr: 'Excel'
-                },
-
-                {
-                    extend: 'pdfHtml5',
-                    text: '<i class="fa fa-file-pdf-o"></i>',
-                    titleAttr: 'PDF'
-                }
-            ]
+        $.ajax({
+            url: "/api/UserManagement/GetAllUserList",
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                ReportList = response;
+                table = $('#example').DataTable({
+                    "bDestroy": true,
+                    data: response.itemsList,
+                    "searching": false,
+                    "bFilter": false,
+                    "bLengthChange": false,
+                    "paging": true,
+                    columns: [
+                        { title: "SNo" },
+                        { title: "Name", "data": "itemname" },
+                        { title: "Email", "data": "qty" }
+                    ],
+                    "columnDefs": [
+                    {//Button
+                        "targets": 0,
+                        "render": function (i, row) {
+                            index = index + 1;
+                            return '<span>' + index + '</span>';
+                        }
+                    }
+                    ]
+                });
+                jQuery('.buttons-excel').removeClass('buttons-html5');
+                jQuery('.buttons-excel').removeClass('dt-button');
+                jQuery('.buttons-excel').addClass('btn-primary');
+                jQuery('.buttons-excel').addClass('btn');
+                jQuery('.buttons-excel').css('width', '150px');
+                jQuery('.buttons-excel').html('Download Excel <i class="fa fa-file-excel-o" style="font-size:16px;color:white"></i>');
+                jQuery('.buttons-pdf').css('width', '150px');
+                jQuery('.buttons-pdf').html('Download PDF <i class="fa fa-file-pdf-o" style="font-size:16px;color:white"></i>');
+                jQuery('.buttons-pdf').removeClass('buttons-html5');
+                jQuery('.buttons-pdf').removeClass('dt-button');
+                jQuery('.buttons-pdf').addClass('btn');
+                jQuery('.buttons-pdf').addClass('btn-warning');
+            },
+            error: function (response) {
+                alert(response);
+            }
         });
-        jQuery('.buttons-excel').removeClass('buttons-html5');
-        jQuery('.buttons-excel').removeClass('dt-button');
-        jQuery('.buttons-excel').addClass('btn-primary');
-        jQuery('.buttons-excel').addClass('btn');
-        jQuery('.buttons-excel').css('width', '150px');
-        jQuery('.buttons-excel').html('Download Excel <i class="fa fa-file-excel-o" style="font-size:16px;color:white"></i>');
-        jQuery('.buttons-pdf').css('width', '150px');
-        jQuery('.buttons-pdf').html('Download PDF <i class="fa fa-file-pdf-o" style="font-size:16px;color:white"></i>');
-        jQuery('.buttons-pdf').removeClass('buttons-html5');
-        jQuery('.buttons-pdf').removeClass('dt-button');
-        jQuery('.buttons-pdf').addClass('btn');
-        jQuery('.buttons-pdf').addClass('btn-warning');
-        //$.ajax({
-        //    url: "/Report/GetAllTransportEntryData?type="+vtype,
-        //    type: "GET",
-        //    contentType: "application/json;charset=utf-8",
-        //    dataType: "json",
-        //    success: function (response) {
-        //        ReportList = response;
-        //        table = $('#example').DataTable({
-        //            "bDestroy": true,
-        //            data: response.itemsList,
-        //            "searching": false,
-        //            "bFilter": false,
-        //            "bLengthChange": false,
-        //            "paging": true,
-        //            columns: [
-        //                { title: "S.No" },
-        //                { title: "Name", "data": "itemname" },
-        //                { title: "Qty", "data": "qty" }
-        //            ],
-        //            "columnDefs": [
-        //            {//Button
-        //                "targets": 0,
-        //                "render": function (i, row) {
-        //                    index = index + 1;
-        //                    return '<span>' + index + '</span>';
-        //                }
-        //            }
-        //            ]
-        //        });
-        //    },
-        //    error: function (response) {
-        //        alert(response);
-        //    }
-        //});
     }
 
 </script>
