@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Create User";
     Layout = "_LoginLayout.cshtml";
 }
 @section Styles{
@@ -16,23 +16,23 @@
     @if (Model.ShowMessage != null)
     {
         
-        @*<div class="alert alert-success alert-dismissible fade show alertMess " role="alert" style="margin:auto;width:60%;margin-top:10px;">
+        <div class="alert alert-success alert-dismissible fade show alertMess " role="alert" style="margin:auto;width:60%;margin-top:10px;">
             
-            <strong>Success!</strong> <span>@Model.ShowMessage</span>
+            <strong>Success!</strong> <span>@Model.ShowMessage Go for Activation <a asp-area="Admin" asp-controller="UserManagement" asp-action="Index">click here</a></span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span class="">X</span>
             </button>
-        </div>*@
-        <script>
+        </div>
+        @*<script>
             window.onload=function () {
                 //alert("");
                 swal("Information!", "@Model.ShowMessage", "success")
             }
-        </script>
+        </script>*@
     }<br />
     <div class="card " style="width:60%; margin:auto">
-        <div class="card-header bg-info">
-            <h4>Create an Account</h4>
+        <div class="card-header bg-info text-white">
+           <span> <i class="fa fa-user-plus"></i> Create new user account</span>
         </div>
         <div class="card-body">
             <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
@@ -87,13 +87,13 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">Create a user</button>
             </form>
         </div>
-        <div class="card-footer">
+        @*<div class="card-footer">
             <p class="text-center">Have an account? <a asp-area="Identity" asp-page="/Account/Login">Log In</a> </p>
 
-        </div>
+        </div>*@
     </div> <!-- card.// -->
 </div>
 @section Scripts {

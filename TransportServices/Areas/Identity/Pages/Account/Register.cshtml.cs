@@ -98,7 +98,7 @@ namespace TransportServices.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
                    // string Message = string.Empty;
-                    ShowMessage = "Register succesfully completed! Now need to be login.";
+                    ShowMessage = "User Account has been created!";
                    // ViewData["SuccessMessage"] = Message;
                     return RedirectToPage();
                     //await _signInManager.SignInAsync(user, isPersistent: false);

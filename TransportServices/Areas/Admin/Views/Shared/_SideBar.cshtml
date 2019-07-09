@@ -67,7 +67,7 @@
                         <a href="#"><i class="fa fa-users fa-fw"></i> User Management<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a asp-action="AddUser" asp-controller="UserManagement"><i class="fa fa-plus"></i> Add new User</a>
+                                <a asp-area="Identity" asp-page="/Account/Register"><i class="fa fa-plus"></i> Add new User</a>
                             </li>
                             <li>
                                 <a asp-action="Index" asp-controller="UserManagement"><i class="fa fa-th-list"></i> User List</a>

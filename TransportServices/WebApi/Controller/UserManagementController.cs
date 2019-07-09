@@ -49,6 +49,7 @@ namespace TransportServices.WebApi.Controller
         {
             try
             {
+                //var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, PhoneNumber = Input.PhoneNo, FirstName = Input.FirstName, LastName = Input.LastName };
                 _dbContext.UserModels.Add(data);
                 int i = await _dbContext.SaveChangesAsync();
                 if (i > 0)
